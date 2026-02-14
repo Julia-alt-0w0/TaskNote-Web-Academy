@@ -1,5 +1,6 @@
-
-
+/* =========================
+   TEMA (DARK / LIGHT)
+========================= */
 const themeToggle = document.getElementById("themeToggle");
 const icon = themeToggle.querySelector("i");
 
@@ -25,7 +26,9 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-
+/* =========================
+   NOTAS / TAREFAS
+========================= */
 const taskTitle = document.getElementById("taskTitle");
 const btnAddTask = document.getElementById("btnAddTask");
 const taskList = document.getElementById("taskList");
@@ -40,9 +43,18 @@ function saveTasks() {
 function renderTasks(filter = "") {
   taskList.innerHTML = "";
 
-  const filtered = tasks.filter(t =>
+  const filtered = tasks.filter((t) =>
     (t.title + " " + t.desc).toLowerCase().includes(filter.toLowerCase())
   );
+
+  if (filtered.length === 0) {
+    taskList.innerHTML = `
+      <p style="color: var(--muted); font-size: 14px;">
+        Nenhuma nota encontrada.
+      </p>
+    `;
+    return;
+  }
 
   filtered.forEach((task) => {
     const card = document.createElement("div");
@@ -50,9 +62,10 @@ function renderTasks(filter = "") {
     if (task.done) card.classList.add("done");
 
     card.innerHTML = `
-      <div>
+      <div class="task-text">
         <h3>${task.title}</h3>
-        <p>${task.desc}</p>
+
+        <textarea class="task-desc" placeholder="Escreva a descrição...">${task.desc}</textarea>
       </div>
 
       <div class="task-actions">
@@ -69,23 +82,33 @@ function renderTasks(filter = "") {
 
     const checkbox = card.querySelector("input[type='checkbox']");
     const deleteBtn = card.querySelector(".btn-delete");
+    const descInput = card.querySelector(".task-desc");
 
+    // marcar como feito
     checkbox.addEventListener("change", () => {
       task.done = checkbox.checked;
       saveTasks();
       renderTasks(searchInput.value);
     });
 
+    // remover
     deleteBtn.addEventListener("click", () => {
-      tasks = tasks.filter(t => t.id !== task.id);
+      tasks = tasks.filter((t) => t.id !== task.id);
       saveTasks();
       renderTasks(searchInput.value);
+    });
+
+    // editar descrição (salvar automático)
+    descInput.addEventListener("input", () => {
+      task.desc = descInput.value;
+      saveTasks();
     });
 
     taskList.appendChild(card);
   });
 }
 
+// adicionar nota
 btnAddTask.addEventListener("click", () => {
   const title = taskTitle.value.trim();
   if (title === "") return;
@@ -93,8 +116,8 @@ btnAddTask.addEventListener("click", () => {
   tasks.unshift({
     id: Date.now(),
     title: title,
-    desc: "bla bnla bkla",
-    done: false
+    desc: "",
+    done: false,
   });
 
   taskTitle.value = "";
@@ -102,19 +125,23 @@ btnAddTask.addEventListener("click", () => {
   renderTasks(searchInput.value);
 });
 
+// enter no input cria nota
 taskTitle.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     btnAddTask.click();
   }
 });
 
+// pesquisar
 searchInput.addEventListener("input", () => {
   renderTasks(searchInput.value);
 });
 
 renderTasks();
 
-
+/* =========================
+   LEMBRETES
+========================= */
 const reminderDay = document.getElementById("reminderDay");
 const reminderText = document.getElementById("reminderText");
 const btnAddReminder = document.getElementById("btnAddReminder");
@@ -130,11 +157,15 @@ function renderReminders() {
   reminderList.innerHTML = "";
 
   if (reminders.length === 0) {
-    reminderList.innerHTML = `<p style="color: var(--muted); font-size: 14px;">Nenhum lembrete ainda.</p>`;
+    reminderList.innerHTML = `
+      <p style="color: var(--muted); font-size: 14px;">
+        Nenhum lembrete ainda.
+      </p>
+    `;
     return;
   }
 
-  reminders.forEach(reminder => {
+  reminders.forEach((reminder) => {
     const item = document.createElement("div");
     item.classList.add("reminder-item");
 
@@ -150,7 +181,7 @@ function renderReminders() {
     `;
 
     item.querySelector("button").addEventListener("click", () => {
-      reminders = reminders.filter(r => r.id !== reminder.id);
+      reminders = reminders.filter((r) => r.id !== reminder.id);
       saveReminders();
       renderReminders();
     });
@@ -168,7 +199,7 @@ btnAddReminder.addEventListener("click", () => {
   reminders.unshift({
     id: Date.now(),
     day: Number(day),
-    text: text
+    text: text,
   });
 
   reminderDay.value = "";
@@ -180,8 +211,9 @@ btnAddReminder.addEventListener("click", () => {
 
 renderReminders();
 
-
-
+/* =========================
+   CALENDÁRIO
+========================= */
 const monthTitle = document.getElementById("monthTitle");
 const calendarDays = document.getElementById("calendarDays");
 const prevMonth = document.getElementById("prevMonth");
