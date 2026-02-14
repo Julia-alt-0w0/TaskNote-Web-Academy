@@ -1,0 +1,507 @@
+/* ==========================
+   VARIÁVEIS DO TEMA
+========================== */
+
+:root {
+  --bg: #eef1ef;
+  --topbar: #c2cbc6;
+  --card: #ffffff;
+  --noteCard: #b8c2bc;
+
+  --text: #1f1f1f;
+  --muted: #5f6368;
+  --border: #d0d6d2;
+  --search: #ffffff;
+
+  --primary: #1a73e8;
+  --danger: #d93025;
+}
+
+/* Tema Escuro */
+body.dark {
+  --bg: #121212;
+  --topbar: #1e1e1e;
+  --card: #1e1e1e;
+  --noteCard: #2a2a2a;
+
+  --text: #e8eaed;
+  --muted: #9aa0a6;
+  --border: #2b2b2b;
+  --search: #2a2a2a;
+
+  --primary: #8ab4f8;
+  --danger: #ff6b6b;
+}
+
+/* ==========================
+   RESET
+========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.2s;
+}
+
+/* ==========================
+   TOPBAR
+========================== */
+
+.topbar {
+  height: 70px;
+  background: var(--topbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  gap: 20px;
+}
+
+/* Logo sem fundo feio */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.logo i {
+  color: #fbbc04;
+  font-size: 22px;
+}
+
+/* ==========================
+   SEARCH
+========================== */
+
+.search {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--search);
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 1px solid var(--border);
+}
+
+.search i {
+  color: var(--muted);
+}
+
+.search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: var(--text);
+}
+
+/* ==========================
+   ÁREA DIREITA
+========================== */
+
+.right-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile i {
+  font-size: 30px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* Botão tema */
+.theme-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--search);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn i {
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* ==========================
+   LAYOUT PRINCIPAL
+========================== */
+
+.layout {
+  width: 95%;
+  max-width: 1400px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 25px;
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.sidebar-card h2 {
+  font-size: 17px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form lembrete */
+.reminder-form {
+  display: grid;
+  grid-template-columns: 80px 1fr 48px;
+  gap: 10px;
+  align-items: center;
+}
+
+.reminder-form input {
+  padding: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: var(--search);
+  color: var(--text);
+}
+
+.reminder-form button {
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.reminder-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Pílula */
+.reminder-item {
+  background: var(--noteCard);
+  padding: 14px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.reminder-item strong {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.reminder-item span {
+  font-size: 14px;
+}
+
+.reminder-item button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.reminder-item button:hover {
+  color: var(--danger);
+}
+
+/* ==========================
+   CONTEÚDO
+========================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================
+   CALENDÁRIO COMPLETO
+========================== */
+
+.month-calendar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.calendar-header h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cal-btn {
+  border: none;
+  background: var(--search);
+  border: 1px solid var(--border);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.weekdays span {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: bold;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day {
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--search);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.day:hover {
+  filter: brightness(0.96);
+}
+
+.day.today {
+  border: 2px solid var(--primary);
+  font-weight: bold;
+}
+
+.day.empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+/* ==========================
+   CRIAR NOTA (SEM PRETO)
+========================== */
+
+.create-note {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 850px;
+  margin: 0 auto;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.create-note input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.create-note input::placeholder {
+  color: var(--muted);
+}
+
+.add-btn {
+  background: var(--primary);
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================
+   GRID DE NOTAS
+========================== */
+
+.tasks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 25px;
+  padding: 10px 20px;
+}
+
+/* CARD */
+.task-card {
+  background: var(--noteCard);
+  border-radius: 26px;
+  padding: 26px 22px;
+  min-height: 220px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.2s;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+}
+
+.task-card h3 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.task-card p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Ações */
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn-delete {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.btn-delete:hover {
+  color: var(--danger);
+}
+
+.task-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-check input {
+  width: 18px;
+  height: 18px;
+}
+
+/* Done */
+.task-card.done {
+  opacity: 0.7;
+}
+
+.task-card.done h3,
+.task-card.done p {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media (max-width: 1100px) {
+  .tasks {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .tasks {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+  }
+
+  .search {
+    max-width: 100%;
+  }
+
+  .create-note {
+    max-width: 100%;
+  }
+}
