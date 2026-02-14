@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskNote Academy - Web Academy UFAC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+
+    <div class="logo">
+      <i class="fa-solid fa-note-sticky"></i>
+      <span>TaskNote Academy</span>
+    </div>
+
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Pesquisar notas..." id="searchInput" />
+    </div>
+
+    <div class="right-area">
+      <button id="themeToggle" class="theme-btn" title="Alternar tema">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+
+      <div class="profile" title="Perfil">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Layout principal -->
+  <main class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card">
+        <h2><i class="fa-solid fa-bell"></i> Lembretes do mês</h2>
+
+        <div class="reminder-form">
+          <input type="number" id="reminderDay" placeholder="Dia" min="1" max="31"/>
+          <input type="text" id="reminderText" placeholder="Ex: Consulta médica, aniversário..." />
+          <button id="btnAddReminder">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <div class="reminder-list" id="reminderList"></div>
+      </div>
+
+    </aside>
+
+    <!-- Conteúdo -->
+    <section class="content">
+
+      <!-- CALENDÁRIO COMPLETO -->
+      <section class="month-calendar">
+        <div class="calendar-header">
+          <button id="prevMonth" class="cal-btn"><i class="fa-solid fa-chevron-left"></i></button>
+          <h2 id="monthTitle">Mês 2026</h2>
+          <button id="nextMonth" class="cal-btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="weekdays">
+          <span>Dom</span>
+          <span>Seg</span>
+          <span>Ter</span>
+          <span>Qua</span>
+          <span>Qui</span>
+          <span>Sex</span>
+          <span>Sáb</span>
+        </div>
+
+        <div class="days" id="calendarDays"></div>
+      </section>
+
+      <!-- Criar nota (agora claro e bonito) -->
+      <div class="create-note">
+        <input type="text" id="taskTitle" placeholder="Criar uma nota..." />
+
+        <button class="add-btn" id="btnAddTask">
+          <i class="fa-solid fa-plus"></i>
+          Adicionar
+        </button>
+      </div>
+
+      <!-- Cards -->
+      <section class="tasks" id="taskList"></section>
+
+    </section>
+
+  </main>
+
+  <script src="arquivo.js"></script>
+</body>
+</html>
