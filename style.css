@@ -203,8 +203,8 @@ body {
   background: var(--primary);
   color: white;
   border-radius: 50%;
-  width: 46px;
-  height: 46px;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -395,6 +395,19 @@ body {
   gap: 25px;
   padding: 10px 20px;
 }
+
+.task-desc{
+  width: 100%;
+  min-height: 60px;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
 
 /* CARD */
 .task-card {
